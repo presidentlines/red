@@ -22,13 +22,11 @@ function CounterPage({ initialCount }) {
 
       <form>
         <label>Add a lot!</label>
-        <input
-          type="number"
-          className="p-1 m-3 bg-gray-50 border border-gray-300"
-        />
+        <input type="number" className="p-1 m-3 bg-gray-50 border border-gray-300" />
         <Button>Add it!</Button>
       </form>
     </Panel>
+
   );
 }
 
