@@ -1,21 +1,36 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useReducer } from 'react';
 import Button from '../components/Button';
 import Panel from '../components/Panel';
 
+const reducer = (state, action) => {
+ //
+};
+
 function CounterPage({ initialCount }) {
-  const [count, setCount] = useState(initialCount);
-  const [valueToAdd, setValueToAdd] = useState(0);
+  // const [count, setCount] = useState(initialCount);
+  // const [valueToAdd, setValueToAdd] = useState(0);
+  const [state, dispatch] = useReducer(reducer, {
+    count: initialCount,
+    valueToAdd: 0
+  })
 
   const increment = () => {
-    setCount(count + 1);
+    // setCount(count + 1);
   };
   const decrement = () => {
-    setCount(count - 1);
+    // setCount(count - 1);
   };
   const handleChange = (event) => {
-    const value = event.target.value;
+    const value = parseInt(event.target.value) || 0;
 
-    console.log(typeof value);
+    // setValueToAdd(value);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // setCount(count + valueToAdd);
+    // setValueToAdd(0);
 
   };
 
@@ -27,12 +42,12 @@ function CounterPage({ initialCount }) {
         <Button onClick={decrement}>Decrement</Button>
       </div>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Add a lot!</label>
         <input 
          type="number"
          className="p-1 m-3 bg-gray-50 border border-gray-300"
-         value={valueToAdd}
+         value={valueToAdd || ""}
          onChange={handleChange}
          />
         <Button>Add it!</Button>
